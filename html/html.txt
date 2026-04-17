@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Гагарин · Новый цифровой ассистент</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #1a2b4c;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header — в стиле Аэрофлот */
+        .header {
+            border-bottom: 1px solid #e9ecf2;
+            padding: 16px 0;
+            background: white;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: #0033a0;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 1px;
+            color: #0033a0;
+        }
+
+        .logo-sub {
+            font-size: 12px;
+            color: #5f6c80;
+            letter-spacing: 1.5px;
+            margin-left: 4px;
+        }
+
+        .nav-desktop {
+            display: flex;
+            gap: 28px;
+            font-weight: 500;
+            color: #1e2e4a;
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-desktop a:hover {
+            color: #0033a0;
+        }
+
+        .right-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lang-switch {
+            font-weight: 600;
+            color: #0033a0;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 48px 0 32px;
+            background: linear-gradient(0deg, #f8faff 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 700;
+            color: #0033a0;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subhead {
+            font-size: 22px;
+            font-weight: 500;
+            color: #1e2e4a;
+            margin-bottom: 16px;
+        }
+
+        .hero-description {
+            max-width: 820px;
+            font-size: 17px;
+            color: #3c4a62;
+            margin-bottom: 28px;
+            border-left: 4px solid #00a3e0;
+            padding-left: 24px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #0033a0;
+            color: white;
+            font-weight: 600;
+            padding: 14px 34px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.2s, transform 0.1s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 14px rgba(0, 51, 160, 0.15);
+        }
+
+        .btn-primary:hover {
+            background: #00227b;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #0033a0;
+            color: #0033a0;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 40px;
+            text-decoration: none;
+            margin-left: 16px;
+            transition: 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #0033a0;
+            color: white;
+        }
+
+        /* Секции с заголовками */
+        .section-title {
+            font-size: 34px;
+            font-weight: 700;
+            color: #0033a0;
+            margin: 48px 0 28px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #00a3e0;
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            margin: 24px 0 32px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 28px 22px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 51, 160, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 38px rgba(0, 51, 160, 0.08), 0 0 0 1px rgba(0, 163, 224, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            color: #00a3e0;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #1a2b4c;
+        }
+
+        .feature-card p {
+            color: #4a5a72;
+            font-size: 16px;
+        }
+
+        /* Блок "Почему удобно" */
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 32px;
+            background: #f4f7fd;
+            padding: 36px 36px;
+            border-radius: 40px;
+            margin: 24px 0 40px;
+        }
+
+        .benefit-item {
+            flex: 1 1 240px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-weight: 500;
+            font-size: 17px;
+        }
+
+        .benefit-item i {
+            color: #0033a0;
+            font-size: 24px;
+            width: 32px;
+            text-align: center;
+        }
+
+        /* Как воспользоваться */
+        .howto-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 32px 32px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.02), 0 0 0 1px #e6ebf2;
+            margin: 32px 0 48px;
+        }
+
+        .howto-item {
+            flex: 1 1 260px;
+        }
+
+        .howto-item h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0033a0;
+        }
+
+        .howto-item p {
+            margin-bottom: 12px;
+        }
+
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eef3fc;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #0033a0;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: 0.2s;
+        }
+
+        .telegram-link i {
+            font-size: 22px;
+        }
+
+        .telegram-link:hover {
+            background: #0033a0;
+            color: white;
+        }
+
+        .note-small {
+            font-size: 14px;
+            color: #6b7a8f;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* Блок-приветствие (в стиле чата) */
+        .chat-preview {
+            background: #eef3fc;
+            border-radius: 32px;
+            padding: 30px 34px;
+            margin: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-bubble {
+            background: white;
+            border-radius: 28px 28px 28px 8px;
+            padding: 20px 28px;
+            max-width: 500px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.02);
+            border: 1px solid #d9e1ec;
+        }
+
+        .chat-bubble p {
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .chat-meta {
+            color: #68768a;
+            font-size: 14px;
+        }
+
+        .avatar-icon {
+            width: 60px;
+            height: 60px;
+            background: #0033a0;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            margin-right: 20px;
+        }
+
+        /* Footer — в духе Аэрофлота */
+        .footer {
+            background: #0b1a30;
+            color: #e0e7f0;
+            padding: 48px 0 32px;
+            margin-top: 60px;
+            border-radius: 48px 48px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #b8c7dd;
+        }
+
+        .footer-col i {
+            margin-right: 10px;
+            color: #00a3e0;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #253c5c;
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #9aabc0;
+        }
+
+        .footer a {
+            color: #cbd6e6;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* Адаптив */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: start;
+                gap: 16px;
+            }
+            .nav-desktop {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+            .hero h1 {
+                font-size: 34px;
+            }
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .benefits-list {
+                padding: 24px;
+            }
+            .chat-preview {
+                flex-direction: column;
+                align-items: start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .feature-card {
+                padding: 20px 16px;
+            }
+        }
+
+        /* Утилиты */
+        .text-accent {
+            color: #00a3e0;
+        }
+        .mt-4 {
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-content">
+        <div class="logo-area">
+            <div class="logo-icon">✈</div>
+            <div>
+                <div class="logo-text">ГАГАРИН</div>
+                <div class="logo-sub">МЕЖДУНАРОДНЫЙ АЭРОПОРТ</div>
+            </div>
+        </div>
+        <div class="nav-desktop">
+            <a href="#">Сервисы</a>
+            <a href="#">Онлайн-табло</a>
+            <a href="#">Пассажирам</a>
+            <a href="#">Бизнес</a>
+            <a href="#">Парковка</a>
+        </div>
+        <div class="right-actions">
+            <span class="lang-switch">RU</span>
+            <i class="fas fa-user-circle" style="font-size: 24px; color: #0033a0;"></i>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Спросите у цифрового<br>помощника «Гагарин»</h1>
+            <div class="hero-subhead">Новый интеллектуальный сервис аэропорта</div>
+            <div class="hero-description">
+                <strong>Гагарин Ассистент</strong> — это не просто программа, а инновационное решение для комфортного путешествия. 
+                Мы внедрили алгоритмы на основе искусственного интеллекта, которые помогают на всех этапах: от парковки до выхода на посадку.
+                Сервис постоянно обучается, чтобы отвечать ещё точнее.
+            </div>
+            <a href="#" class="btn-primary"><i class="far fa-comment-dots" style="margin-right: 8px;"></i> Попробовать сейчас</a>
+            <a href="#" class="btn-outline">Узнать больше</a>
+        </div>
+    </section>
+
+    <!-- Что умеет (карточки) -->
+    <div class="container">
+        <h2 class="section-title">Что умеет помощник</h2>
+        <div class="card-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                <h3>Онлайн-регистрация и статус рейса</h3>
+                <p>Мгновенно сообщит время начала регистрации, номер выхода, задержки или изменения по вашему рейсу.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                <h3>Акции и спецпредложения</h3>
+                <p>Расскажет о скидках в магазинах аэропорта, парковках и услугах бизнес-залов.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+                <h3>Навигация по терминалу</h3>
+                <p>Построит маршрут до нужного выхода, кафе, стойки регистрации или комнаты матери и ребенка.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-paw"></i></div>
+                <h3>Путешествие с животными</h3>
+                <p>Предоставит подробные правила перевозки питомцев и список ветеринарного контроля в аэропорту.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-car"></i></div>
+                <h3>Парковка и транспорт</h3>
+                <p>Поможет забронировать место на парковке, уточнит стоимость и наличие свободных мест онлайн.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                <h3>Программа лояльности</h3>
+                <p>Подскажет, как стать участником «Гагарин Бонус» и копить баллы за каждое посещение.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Блок с доп. преимуществами (в стиле "Почему это удобно") -->
+    <div class="container">
+        <h2 class="section-title">Почему это удобно</h2>
+        <div class="benefits-list">
+            <div class="benefit-item"><i class="fas fa-clock"></i> Круглосуточно — на связи 24/7</div>
+            <div class="benefit-item"><i class="fas fa-bolt"></i> Мгновенный ответ — без ожидания</div>
+            <div class="benefit-item"><i class="fas fa-database"></i> Только актуальные данные из систем аэропорта</div>
+            <div class="benefit-item"><i class="fas fa-mobile-alt"></i> Работает на любых устройствах</div>
+            <div class="benefit-item"><i class="fas fa-robot"></i> Исключает человеческий фактор</div>
+            <div class="benefit-item"><i class="fas fa-graduation-cap"></i> Постоянное обучение — сервис становится умнее</div>
+        </div>
+    </div>
+
+    <!-- Как воспользоваться (в точности по стилю Аэрофлота) -->
+    <div class="container">
+        <h2 class="section-title">Как воспользоваться</h2>
+        <div class="howto-block">
+            <div class="howto-item">
+                <h4><i class="fas fa-globe" style="margin-right: 10px;"></i> На сайте аэропорта</h4>
+                <p>Нажмите на иконку чата в правом нижнем углу любой страницы сайта <strong>gagarin.aero</strong> и напишите сообщение.</p>
+                <p style="font-size: 14px; color: #4a627a;">Если вы авторизованы в личном кабинете, помощник предложит персонализированные рекомендации.</p>
+            </div>
+            <div class="howto-item">
+                <h4><i class="fab fa-telegram"></i> В Телеграме</h4>
+                <p>Теперь цифровой ассистент доступен в мессенджере — переходите по ссылке и общайтесь в удобном формате.</p>
+                <a href="#" class="telegram-link"><i class="fab fa-telegram-plane"></i> @gagarin_assistant_bot</a>
+                <p class="note-small"><i class="far fa-shield"></i> Бот не запрашивает пароли и платёжные данные.</p>
+            </div>
+            <div class="howto-item">
+                <h4><i class="fas fa-qrcode"></i> В терминале</h4>
+                <p>Отсканируйте QR-код на стойках информации или посадочных талонах — чат-бот откроется сразу в браузере.</p>
+                <div style="background: #f4f7fd; width: 100px; height: 100px; margin-top: 16px; display: flex; align-items: center; justify-content: center; border-radius: 16px;">
+                    <i class="fas fa-qrcode" style="font-size: 48px; color: #0033a0;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Приветственный блок (как "Вас приветствует чат-бот Аэрофлота!") -->
+    <div class="container">
+        <div class="chat-preview">
+            <div style="display: flex; align-items: center;">
+                <div class="avatar-icon">✈</div>
+                <div class="chat-bubble">
+                    <p><strong>Гагарин Ассистент</strong> приветствует вас! 👋<br>Я работаю 24/7 и постоянно учусь. Буду рад помочь с любым вопросом об аэропорте.</p>
+                    <div style="display: flex; gap: 12px; margin-top: 12px;">
+                        <span style="background:#e1e9f5; padding:6px 16px; border-radius: 40px; font-size:14px;">Регистрация</span>
+                        <span style="background:#e1e9f5; padding:6px 16px; border-radius: 40px; font-size:14px;">Рейс</span>
+                        <span style="background:#e1e9f5; padding:6px 16px; border-radius: 40px; font-size:14px;">Багаж</span>
+                    </div>
+                    <div class="chat-meta" style="margin-top: 20px;">Аэропорт Гагарин · онлайн</div>
+                </div>
+            </div>
+            <div style="font-size: 15px; max-width: 300px;">
+                <p style="font-weight: 500;">✨ Мы расширяем возможности: скоро голосовой ввод и интеграция с расписанием.</p>
+                <p style="color: #5f6f82;">Делитесь идеями через чат — они помогут сделать сервис ещё лучше!</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer — аналогично стилю Аэрофлота -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>Контакты</h5>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> 8 (800) 100-0-333 (бесплатно по РФ)</li>
+                    <li><i class="fas fa-phone-alt"></i> +7 (8452) 99-99-99 (Саратов)</li>
+                    <li><i class="far fa-envelope"></i> help@gagarin.aero</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Саратов, аэропорт Гагарин</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Компания</h5>
+                <ul>
+                    <li><a href="#">Об аэропорте</a></li>
+                    <li><a href="#">Пресс-центр</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Партнёрам</h5>
+                <ul>
+                    <li><a href="#">Авиакомпаниям</a></li>
+                    <li><a href="#">Арендаторам</a></li>
+                    <li><a href="#">Реклама</a></li>
+                    <li><a href="#">Грузовые перевозки</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Сервисы</h5>
+                <ul>
+                    <li><a href="#">Онлайн-табло</a></li>
+                    <li><a href="#">Бизнес-зал</a></li>
+                    <li><a href="#">Услуги VIP</a></li>
+                    <li><a href="#">Для маломобильных</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Международный аэропорт «Гагарин»</span>
+            <span>
+                <a href="#" style="margin-right: 20px;">Обратная связь</a>
+                <a href="#">Карта сайта</a>
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- Небольшой скрипт для мобильного комфорта (опционально) -->
+<script>
+    (function() {
+        // просто плавная прокрутка для якорей (если понадобится)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== "#" && href !== "") {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
+```
